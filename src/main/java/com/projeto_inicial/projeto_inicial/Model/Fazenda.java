@@ -7,15 +7,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Fazenda {
 
     @Id
-    private String idFazenda;
+    private String id;
     private String nome;
 
-    public String getIdFazenda() {
-        return idFazenda;
+    public String getId() {
+        return id;
     }
 
-    public void setIdFazenda(String idFazenda) {
-        this.idFazenda = idFazenda;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -26,15 +26,15 @@ public class Fazenda {
         this.nome = nome;
     }
 
-    public Fazenda(String idFazenda, String nome) {
-        this.idFazenda = idFazenda;
+    public Fazenda(String id, String nome) {
+        this.id = id;
         this.nome = nome;
     }
 
     @Override
     public String toString() {
         return "Fazenda{" +
-                "id=" + idFazenda +
+                "id=" + id +
                 ", nome='" + nome + '\'' +
                 '}';
     }
