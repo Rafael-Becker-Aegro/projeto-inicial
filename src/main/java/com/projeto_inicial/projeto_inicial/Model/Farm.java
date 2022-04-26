@@ -1,5 +1,6 @@
 package com.projeto_inicial.projeto_inicial.Model;
 
+import com.sun.istack.NotNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -8,6 +9,7 @@ public class Farm {
 
     @Id
     private String id;
+    @NotNull
     private String name;
 
     public String getId() {

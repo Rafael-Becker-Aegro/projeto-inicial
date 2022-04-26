@@ -1,7 +1,7 @@
 package com.projeto_inicial.projeto_inicial.Model;
 
+import com.sun.istack.NotNull;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -9,10 +9,11 @@ public class Plot {
 
     @Id
     private String id;
+    @NotNull
     private String name;
+    @NotNull
     private int area;
-
-    @DBRef
+    @NotNull
     private String farm;
 
     public Plot(String name, int area, String farm) {
