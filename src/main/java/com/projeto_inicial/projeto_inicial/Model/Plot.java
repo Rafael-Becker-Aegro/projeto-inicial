@@ -5,32 +5,32 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Talhao {
+public class Plot {
 
     @Id
     private String id;
-    private String nome;
+    private String name;
     private int area;
 
     @DBRef
-    private String idFazenda;
+    private String farm;
 
-    public Talhao(String nome, int area, String idFazenda) {
-        this.nome = nome;
+    public Plot(String name, int area, String farm) {
+        this.name = name;
         this.area = area;
-        this.idFazenda = idFazenda;
+        this.farm = farm;
     }
 
     public String getId() {
         return id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getArea() {
@@ -41,21 +41,21 @@ public class Talhao {
         this.area = area;
     }
 
-    public String getIdFazenda() {
-        return idFazenda;
+    public String getFarm() {
+        return farm;
     }
 
-    public void setIdFazenda(String idFazenda) {
-        this.idFazenda = idFazenda;
+    public void setFarm(String farm) {
+        this.farm = farm;
     }
 
     @Override
     public String toString() {
-        return "Talhao{" +
+        return "Plot{" +
                 "id='" + id + '\'' +
-                ", nome='" + nome + '\'' +
+                ", name='" + name + '\'' +
                 ", area=" + area +
-                ", idFazenda='" + idFazenda + '\'' +
+                ", farmId='" + farm + '\'' +
                 '}';
     }
 }

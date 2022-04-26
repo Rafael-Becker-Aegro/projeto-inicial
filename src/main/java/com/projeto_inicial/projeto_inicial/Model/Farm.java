@@ -4,11 +4,11 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Fazenda {
+public class Farm {
 
     @Id
     private String id;
-    private String nome;
+    private String name;
 
     public String getId() {
         return id;
@@ -18,24 +18,24 @@ public class Fazenda {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Fazenda(String id, String nome) {
+    public Farm(String id, String name) {
         this.id = id;
-        this.nome = nome;
+        this.name = name;
     }
 
     @Override
     public String toString() {
-        return "Fazenda{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
+        return "Farm{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 }
