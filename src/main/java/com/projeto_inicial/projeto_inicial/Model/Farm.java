@@ -3,6 +3,9 @@ package com.projeto_inicial.projeto_inicial.Model;
 import com.sun.istack.NotNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.util.ObjectUtils;
+
+import java.util.Objects;
 
 @Document
 public class Farm {
@@ -31,6 +34,27 @@ public class Farm {
     public Farm(String id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public boolean isComplete(){
+        return !(this == null || this.isEmpty() || this.id.isEmpty() || this.name.isEmpty());
+    }
+
+    public boolean isEmpty(){
+        return ObjectUtils.isEmpty(this);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Farm farm = (Farm) o;
+        return Objects.equals(id, farm.id) && Objects.equals(name, farm.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 
     @Override

@@ -12,7 +12,7 @@ public interface FarmService {
 
     Farm create(Farm farm);
 
-    String removeById(String farmId);
+    void remove(Farm farm);
 
     List<Farm> fetchAllByFarmName(String farmName);
 }
