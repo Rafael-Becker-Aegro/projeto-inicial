@@ -32,7 +32,7 @@ public class FarmController {
             return new ResponseEntity<Farm>(HttpStatus.BAD_REQUEST);
         }
         Farm farm = this.farmServiceImpl.fetchById(farmId);
-        if(farm.isEmpty() || farm.equals(null)){
+        if(farm == null || farm.isEmpty()){
             return new ResponseEntity<Farm>(HttpStatus.NOT_FOUND);
         }
 
@@ -54,7 +54,7 @@ public class FarmController {
     @DeleteMapping("/{farmId}")
     public ResponseEntity<Farm> removeById(@PathVariable String farmId){
         Farm farm = this.farmServiceImpl.fetchById(farmId);
-        if(farm.isEmpty() || farm.equals(null)){
+        if(farm == null || farm.isEmpty()){
             return new ResponseEntity<Farm>(HttpStatus.NOT_FOUND);
         }
 

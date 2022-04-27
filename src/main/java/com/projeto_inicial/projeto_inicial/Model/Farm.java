@@ -1,5 +1,6 @@
 package com.projeto_inicial.projeto_inicial.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,6 +15,11 @@ public class Farm {
     private String id;
     @NotNull
     private String name;
+
+    public Farm(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     public String getId() {
         return id;
@@ -31,15 +37,12 @@ public class Farm {
         this.name = name;
     }
 
-    public Farm(String id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
+    @JsonIgnore
     public boolean isComplete(){
         return !(this == null || this.isEmpty() || this.id.isEmpty() || this.name.isEmpty());
     }
 
+    @JsonIgnore
     public boolean isEmpty(){
         return ObjectUtils.isEmpty(this);
     }
