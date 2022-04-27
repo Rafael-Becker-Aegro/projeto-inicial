@@ -58,6 +58,7 @@ public class FarmController {
             return new ResponseEntity<Farm>(HttpStatus.NOT_FOUND);
         }
 
+        farmServiceImpl.remove(farm);
         return new ResponseEntity<Farm>(farm, HttpStatus.OK);
     }
 
