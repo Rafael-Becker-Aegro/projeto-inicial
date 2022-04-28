@@ -1,4 +1,4 @@
-package com.projeto_inicial.projeto_inicial.Model;
+package com.projeto_inicial.projeto_inicial.Plot.Model;
 
 import com.sun.istack.NotNull;
 import org.springframework.data.annotation.Id;

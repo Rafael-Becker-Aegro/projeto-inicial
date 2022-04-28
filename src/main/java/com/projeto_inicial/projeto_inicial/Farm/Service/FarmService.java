@@ -1,6 +1,6 @@
-package com.projeto_inicial.projeto_inicial.Service;
+package com.projeto_inicial.projeto_inicial.Farm.Service;
 
-import com.projeto_inicial.projeto_inicial.Model.Farm;
+import com.projeto_inicial.projeto_inicial.Farm.Model.Farm;
 
 import java.util.List;
 

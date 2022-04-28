@@ -1,7 +1,7 @@
-package com.projeto_inicial.projeto_inicial.Controller;
+package com.projeto_inicial.projeto_inicial.Farm.Controller;
 
-import com.projeto_inicial.projeto_inicial.Model.Farm;
-import com.projeto_inicial.projeto_inicial.Service.FarmServiceImpl;
+import com.projeto_inicial.projeto_inicial.Farm.Model.Farm;
+import com.projeto_inicial.projeto_inicial.Farm.Service.FarmServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

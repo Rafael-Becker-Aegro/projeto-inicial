@@ -1,7 +1,7 @@
-package com.projeto_inicial.projeto_inicial.Controller;
+package com.projeto_inicial.projeto_inicial.Plot.Controller;
 
-import com.projeto_inicial.projeto_inicial.Model.Plot;
-import com.projeto_inicial.projeto_inicial.Service.PlotServiceImpl;
+import com.projeto_inicial.projeto_inicial.Plot.Model.Plot;
+import com.projeto_inicial.projeto_inicial.Plot.Service.PlotServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

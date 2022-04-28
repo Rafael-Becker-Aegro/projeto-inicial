@@ -1,7 +1,7 @@
-package com.projeto_inicial.projeto_inicial.Service;
+package com.projeto_inicial.projeto_inicial.Farm.Service;
 
-import com.projeto_inicial.projeto_inicial.Model.Farm;
-import com.projeto_inicial.projeto_inicial.Repository.FarmRepository;
+import com.projeto_inicial.projeto_inicial.Farm.Model.Farm;
+import com.projeto_inicial.projeto_inicial.Farm.Repository.FarmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
