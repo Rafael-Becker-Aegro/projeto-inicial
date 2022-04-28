@@ -4,6 +4,8 @@ import com.sun.istack.NotNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigDecimal;
+
 @Document
 public class Plot {
 
@@ -12,11 +14,11 @@ public class Plot {
     @NotNull
     private String name;
     @NotNull
-    private int area;
+    private BigDecimal area;
     @NotNull
     private String farm;
 
-    public Plot(String name, int area, String farm) {
+    public Plot(String name, BigDecimal area, String farm) {
         this.name = name;
         this.area = area;
         this.farm = farm;
@@ -34,11 +36,11 @@ public class Plot {
         this.name = name;
     }
 
-    public int getArea() {
+    public BigDecimal getArea() {
         return area;
     }
 
-    public void setArea(int area) {
+    public void setArea(BigDecimal area) {
         this.area = area;
     }
 

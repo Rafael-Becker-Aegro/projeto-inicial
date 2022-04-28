@@ -39,7 +39,7 @@ public class Farm {
 
     @JsonIgnore
     public boolean isComplete(){
-        return !(this == null || this.isEmpty() || this.id.isEmpty() || this.name.isEmpty());
+        return !(this.isEmpty() || this.id.isEmpty() || this.name.isEmpty());
     }
 
     @JsonIgnore
