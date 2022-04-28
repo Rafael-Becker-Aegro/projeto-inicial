@@ -3,10 +3,10 @@ package com.projeto_inicial.projeto_inicial.Service;
 import com.projeto_inicial.projeto_inicial.Model.Farm;
 import com.projeto_inicial.projeto_inicial.Repository.FarmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class FarmServiceImpl implements FarmService {
@@ -14,36 +14,52 @@ public class FarmServiceImpl implements FarmService {
     private FarmRepository farmRepository;
 
     @Override
-    public List<Farm> getAll(){
-        return  this.farmRepository.findAll();
-    }
-
-    @Override
-    public Farm fetchById(String farmId){
-        Optional<Farm> findFarm = this.farmRepository.findById(farmId);
-        Farm farm;
-        if(findFarm.isPresent()){
-            farm = findFarm.get();
-        }else{
-            throw new RuntimeException("Couldn't find farm with id: "+ farmId);
+    public List<Farm> getAll() throws DataAccessException {
+        try {
+            return this.farmRepository.findAll();
         }
-        return farm;
+        catch(Exception e){
+            return null;
+        }
     }
 
     @Override
-    public Farm create(Farm farm){
+    public Farm fetchById(String farmId) throws DataAccessException{
+        try {
+            return this.farmRepository.findById(farmId).get();
+        }
+        catch(Exception e){
+            return null;
+        }
+    }
+
+    @Override
+    public Farm create(Farm farm) throws DataAccessException{
+        try{
         return this.farmRepository.save(farm);
+        }
+        catch(Exception e){
+            return null;
+        }
     }
 
     @Override
-    public String removeById(String farmId){
-        Farm farm = this.fetchById(farmId);
+    public void remove(Farm farm) throws DataAccessException{
+        try{
         this.farmRepository.delete(farm);
-        return "Fazenda " + farmId + " deletada com sucesso.";
+        }
+        catch(Exception e){
+        }
     }
 
     @Override
-    public List<Farm> fetchAllByFarmName(String farmName) {
-        return this.farmRepository.findFarmsByName(farmName);
+    public List<Farm> fetchAllByFarmName(String farmName) throws DataAccessException{
+        try{
+            return this.farmRepository.findFarmsByName(farmName);
+        }
+        catch(Exception e){
+            return null;
+        }
     }
+
 }
