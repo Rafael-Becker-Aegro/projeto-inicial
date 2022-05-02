@@ -12,34 +12,29 @@ import java.util.Objects;
 public class Farm {
 
     @Id
-    private String id;
+    private java.lang.String id;
     @NotNull
-    private String name;
+    private java.lang.String name;
 
-    public Farm(String id, String name) {
+    public Farm(java.lang.String id, java.lang.String name) {
         this.id = id;
         this.name = name;
     }
 
-    public String getId() {
+    public java.lang.String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(java.lang.String id) {
         this.id = id;
     }
 
-    public String getName() {
+    public java.lang.String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(java.lang.String name) {
         this.name = name;
-    }
-
-    @JsonIgnore
-    public boolean isComplete(){
-        return !(this.isEmpty() || this.id.isEmpty() || this.name.isEmpty());
     }
 
     @JsonIgnore
@@ -61,7 +56,7 @@ public class Farm {
     }
 
     @Override
-    public String toString() {
+    public java.lang.String toString() {
         return "Farm{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +

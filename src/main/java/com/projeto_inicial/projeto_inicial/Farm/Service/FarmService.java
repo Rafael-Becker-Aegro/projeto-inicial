@@ -8,11 +8,11 @@ public interface FarmService {
 
     List<Farm> getAll();
 
-    Farm fetchById(String farmId);
+    public Farm fetchById(String farmId);
 
     Farm create(Farm farm);
 
-    void remove(Farm farm);
+    void remove(String farm);
 
     List<Farm> fetchAllByFarmName(String farmName);
 }
