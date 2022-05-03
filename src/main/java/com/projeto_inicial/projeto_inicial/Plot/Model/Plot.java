@@ -48,10 +48,6 @@ public class Plot {
         return farm;
     }
 
-    public void setFarm(String farm) {
-        this.farm = farm;
-    }
-
     @Override
     public String toString() {
         return "Plot{" +
