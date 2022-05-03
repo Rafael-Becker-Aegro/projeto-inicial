@@ -1,4 +1,4 @@
-package com.projeto_inicial.projeto_inicial.Plot.Model;
+package com.projeto_inicial.projeto_inicial.Farm.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
