@@ -55,6 +55,10 @@ public class Plot {
         return ObjectUtils.isEmpty(this);
     }
 
+    public void setFarm(String farm) {
+        this.farm = farm;
+    }
+
     @Override
     public String toString() {
         return "Plot{" +
