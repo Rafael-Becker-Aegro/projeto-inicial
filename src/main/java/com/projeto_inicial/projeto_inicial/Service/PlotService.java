@@ -1,6 +1,6 @@
-package com.projeto_inicial.projeto_inicial.Plot.Service;
+package com.projeto_inicial.projeto_inicial.Service;
 
-import com.projeto_inicial.projeto_inicial.Plot.Model.Plot;
+import com.projeto_inicial.projeto_inicial.Model.Plot;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ public interface PlotService {
 
     Plot create(Plot plot);
 
-    String removeById(String plotId);
+    void removeById(String plotId);
 
     List<Plot> fetchAllByFarmId(String farmId);
 }

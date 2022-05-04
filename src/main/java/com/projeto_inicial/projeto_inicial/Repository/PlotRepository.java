@@ -1,6 +1,6 @@
-package com.projeto_inicial.projeto_inicial.Plot.Repository;
+package com.projeto_inicial.projeto_inicial.Repository;
 
-import com.projeto_inicial.projeto_inicial.Plot.Model.Plot;
+import com.projeto_inicial.projeto_inicial.Model.Plot;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;

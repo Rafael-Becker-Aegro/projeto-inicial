@@ -1,8 +1,10 @@
-package com.projeto_inicial.projeto_inicial.Plot.Model;
+package com.projeto_inicial.projeto_inicial.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.util.ObjectUtils;
 
 import java.math.BigDecimal;
 
@@ -46,6 +48,11 @@ public class Plot {
 
     public String getFarm() {
         return farm;
+    }
+
+    @JsonIgnore
+    public boolean isEmpty(){
+        return ObjectUtils.isEmpty(this);
     }
 
     public void setFarm(String farm) {

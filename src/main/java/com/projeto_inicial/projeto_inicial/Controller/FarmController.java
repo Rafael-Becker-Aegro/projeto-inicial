@@ -1,7 +1,7 @@
-package com.projeto_inicial.projeto_inicial.Farm.Controller;
+package com.projeto_inicial.projeto_inicial.Controller;
 
-import com.projeto_inicial.projeto_inicial.Farm.Model.Farm;
-import com.projeto_inicial.projeto_inicial.Farm.Service.FarmServiceImpl;
+import com.projeto_inicial.projeto_inicial.Model.Farm;
+import com.projeto_inicial.projeto_inicial.Service.FarmServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v1/farm")
+@RequestMapping(path = "api/v1/farms")
 public class FarmController {
 
     @Autowired
