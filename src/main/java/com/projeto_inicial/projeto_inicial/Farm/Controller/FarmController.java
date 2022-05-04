@@ -28,38 +28,20 @@ public class FarmController {
 
     @GetMapping("/{farmId}")
     public ResponseEntity<Farm> fetchById(@PathVariable String farmId){
-        if(farmId.isEmpty()){
-            return new ResponseEntity<Farm>(HttpStatus.BAD_REQUEST);
-        }
         Farm farm = this.farmServiceImpl.fetchById(farmId);
-        if(farm == null || farm.isEmpty()){
-            return new ResponseEntity<Farm>(HttpStatus.NOT_FOUND);
-        }
-
         return new ResponseEntity<Farm>(farm, HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity<Farm>  create(@RequestBody Farm farm){
-        if(!farm.isComplete()){
-            return new ResponseEntity<Farm>(HttpStatus.BAD_REQUEST);
-        }
-        if(farmServiceImpl.fetchById(farm.getId()) != null){
-            return new ResponseEntity<Farm>(HttpStatus.BAD_REQUEST);
-        }
         Farm addedFarm = this.farmServiceImpl.create(farm);
         return new ResponseEntity<Farm>(addedFarm, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{farmId}")
     public ResponseEntity<Farm> removeById(@PathVariable String farmId){
-        Farm farm = this.farmServiceImpl.fetchById(farmId);
-        if(farm == null || farm.isEmpty()){
-            return new ResponseEntity<Farm>(HttpStatus.NOT_FOUND);
-        }
-
-        farmServiceImpl.remove(farm);
-        return new ResponseEntity<Farm>(farm, HttpStatus.OK);
+        farmServiceImpl.remove(farmId);
+        return new ResponseEntity<Farm>(HttpStatus.OK);
     }
 
     @GetMapping("/by_name/{farmName}")
