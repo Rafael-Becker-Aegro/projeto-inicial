@@ -1,7 +1,7 @@
-package com.projeto_inicial.projeto_inicial.Farm.Service;
+package com.projeto_inicial.projeto_inicial.Service;
 
-import com.projeto_inicial.projeto_inicial.Farm.Exceptions.ObjectIncompleteException;
-import com.projeto_inicial.projeto_inicial.Farm.Model.Plot;
+import com.projeto_inicial.projeto_inicial.Exceptions.ObjectIncompleteException;
+import com.projeto_inicial.projeto_inicial.Model.Plot;
 
 public class CheckPlot {
     public static void notNullOrEmpty(Plot plot){

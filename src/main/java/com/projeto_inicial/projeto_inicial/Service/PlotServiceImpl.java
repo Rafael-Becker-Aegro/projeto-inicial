@@ -1,10 +1,10 @@
-package com.projeto_inicial.projeto_inicial.Farm.Service;
+package com.projeto_inicial.projeto_inicial.Service;
 
-import com.projeto_inicial.projeto_inicial.Farm.Exceptions.ObjectIncompleteException;
-import com.projeto_inicial.projeto_inicial.Farm.Exceptions.ObjectNotFoundException;
-import com.projeto_inicial.projeto_inicial.Farm.Model.Plot;
-import com.projeto_inicial.projeto_inicial.Farm.Repository.FarmRepository;
-import com.projeto_inicial.projeto_inicial.Farm.Repository.PlotRepository;
+import com.projeto_inicial.projeto_inicial.Exceptions.ObjectIncompleteException;
+import com.projeto_inicial.projeto_inicial.Exceptions.ObjectNotFoundException;
+import com.projeto_inicial.projeto_inicial.Model.Plot;
+import com.projeto_inicial.projeto_inicial.Repository.FarmRepository;
+import com.projeto_inicial.projeto_inicial.Repository.PlotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

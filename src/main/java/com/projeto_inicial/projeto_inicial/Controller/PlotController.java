@@ -1,7 +1,7 @@
-package com.projeto_inicial.projeto_inicial.Farm.Controller;
+package com.projeto_inicial.projeto_inicial.Controller;
 
-import com.projeto_inicial.projeto_inicial.Farm.Model.Plot;
-import com.projeto_inicial.projeto_inicial.Farm.Service.PlotServiceImpl;
+import com.projeto_inicial.projeto_inicial.Model.Plot;
+import com.projeto_inicial.projeto_inicial.Service.PlotServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

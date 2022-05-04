@@ -1,4 +1,4 @@
-package com.projeto_inicial.projeto_inicial.Farm.Exceptions;
+package com.projeto_inicial.projeto_inicial.Exceptions;
 
 public class ObjectIncompleteException extends  RuntimeException{
     public ObjectIncompleteException(String missingInfo) {

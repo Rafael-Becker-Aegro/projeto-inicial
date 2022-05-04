@@ -1,4 +1,4 @@
-package com.projeto_inicial.projeto_inicial.Farm.Exceptions;
+package com.projeto_inicial.projeto_inicial.Exceptions;
 
 public class ObjectNotFoundException extends RuntimeException{
     public ObjectNotFoundException(String objName, String id) {

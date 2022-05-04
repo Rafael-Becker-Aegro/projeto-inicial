@@ -1,4 +1,4 @@
-package com.projeto_inicial.projeto_inicial.Farm.Exceptions;
+package com.projeto_inicial.projeto_inicial.Exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.projeto_inicial.projeto_inicial.Farm.Model;
+package com.projeto_inicial.projeto_inicial.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
@@ -6,28 +6,27 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.util.ObjectUtils;
 
-import java.math.BigDecimal;
+import java.util.Objects;
 
 @Document
-public class Plot {
+public class Farm {
 
     @Id
     private String id;
     @NotNull
     private String name;
-    @NotNull
-    private BigDecimal area;
-    @NotNull
-    private String farm;
 
-    public Plot(String name, BigDecimal area, String farm) {
+    public Farm(String id, String name) {
+        this.id = id;
         this.name = name;
-        this.area = area;
-        this.farm = farm;
     }
 
     public String getId() {
         return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -38,34 +37,29 @@ public class Plot {
         this.name = name;
     }
 
-    public BigDecimal getArea() {
-        return area;
-    }
-
-    public void setArea(BigDecimal area) {
-        this.area = area;
-    }
-
-    public String getFarm() {
-        return farm;
-    }
-
     @JsonIgnore
     public boolean isEmpty(){
         return ObjectUtils.isEmpty(this);
     }
 
-    public void setFarm(String farm) {
-        this.farm = farm;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Farm farm = (Farm) o;
+        return Objects.equals(id, farm.id) && Objects.equals(name, farm.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 
     @Override
     public String toString() {
-        return "Plot{" +
+        return "Farm{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", area=" + area +
-                ", farmId='" + farm + '\'' +
                 '}';
     }
 }
