@@ -1,13 +1,14 @@
 package com.projeto_inicial.projeto_inicial.Farm.Service;
 
-import com.projeto_inicial.projeto_inicial.Farm.Repository.PlotRepository;
+import com.projeto_inicial.projeto_inicial.Farm.Exceptions.ObjectIncompleteException;
+import com.projeto_inicial.projeto_inicial.Farm.Exceptions.ObjectNotFoundException;
 import com.projeto_inicial.projeto_inicial.Farm.Model.Plot;
 import com.projeto_inicial.projeto_inicial.Farm.Repository.FarmRepository;
+import com.projeto_inicial.projeto_inicial.Farm.Repository.PlotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PlotServiceImpl implements PlotService {
@@ -20,14 +21,11 @@ public class PlotServiceImpl implements PlotService {
     @Override
     public Plot fetchById(String plotId) {
         try {
-            Optional<Plot> findPlot = this.plotRepository.findById(plotId);
-            Plot plot;
-            if(findPlot.isPresent()){
-                plot = findPlot.get();
-            }else{
-                throw new RuntimeException("Couldn't find farm with id: "+ plotId);
+            if(plotId == null || plotId.isEmpty()){
+                throw new ObjectIncompleteException("Plot Id");
             }
-            return plot;
+            return  this.plotRepository.findById(plotId).orElseThrow(
+                    () -> new ObjectNotFoundException("Plot", plotId));
         }
         catch(Exception e){
             throw new InternalError(e);
@@ -37,6 +35,8 @@ public class PlotServiceImpl implements PlotService {
     @Override
     public Plot create(Plot plot) {
         try{
+            CheckPlot.hasAllMinusId(plot);
+            checkIfFarmExists(plot.getFarm());
             return this.plotRepository.save(plot);
         }
         catch(Exception e){
@@ -45,11 +45,11 @@ public class PlotServiceImpl implements PlotService {
     }
 
     @Override
-    public String removeById(String plotId) {
+    public void removeById(String plotId) {
         try {
             Plot plot = this.fetchById(plotId);
+
             this.plotRepository.delete(plot);
-            return "Plot " + plotId + " successfully.";
         }
         catch(Exception e){
             throw new InternalError(e);
@@ -59,6 +59,9 @@ public class PlotServiceImpl implements PlotService {
     @Override
     public List<Plot> fetchAllByFarmId(String farmId) {
         try{
+            if(farmId == null || farmId.isEmpty()){
+                throw new ObjectIncompleteException("Farm Id");
+            }
             return this.plotRepository.findPlotsByFarm(farmId);
         }
         catch(Exception e){
@@ -66,7 +69,11 @@ public class PlotServiceImpl implements PlotService {
         }
     }
 
-/*    private void fazendaExiste(String idFazenda){
-
-    }*/
+    private void checkIfFarmExists(String farmId){
+        if(farmId == null || farmId.isEmpty()){
+            throw new ObjectIncompleteException("Farm Id");
+        }
+        this.farmRepository.findById(farmId).orElseThrow(
+                () -> new ObjectNotFoundException("Farm", farmId));
+    }
 }

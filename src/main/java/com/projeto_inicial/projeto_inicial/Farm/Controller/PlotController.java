@@ -1,7 +1,7 @@
 package com.projeto_inicial.projeto_inicial.Farm.Controller;
 
-import com.projeto_inicial.projeto_inicial.Farm.Service.PlotServiceImpl;
 import com.projeto_inicial.projeto_inicial.Farm.Model.Plot;
+import com.projeto_inicial.projeto_inicial.Farm.Service.PlotServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,6 +43,5 @@ public class PlotController {
     public ResponseEntity<Plot> removeById(@PathVariable String plotId){
         this.plotService.removeById(plotId);
         return new ResponseEntity<Plot>(HttpStatus.OK);
-
     }
 }

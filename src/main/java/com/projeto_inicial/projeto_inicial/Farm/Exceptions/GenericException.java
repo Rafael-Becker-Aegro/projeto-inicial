@@ -2,15 +2,15 @@ package com.projeto_inicial.projeto_inicial.Farm.Exceptions;
 
 import java.time.Instant;
 
-public class FarmException {
+public class GenericException {
     private Instant timestamp;
     private String message;
     private String path;
 
-    public FarmException() {
+    public GenericException() {
     }
 
-    public FarmException(Instant timestamp, String message, String path) {
+    public GenericException(Instant timestamp, String message, String path) {
         this.timestamp = timestamp;
         this.message = message;
         this.path = path;

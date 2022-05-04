@@ -1,7 +1,7 @@
 package com.projeto_inicial.projeto_inicial.Farm.Service;
 
-import com.projeto_inicial.projeto_inicial.Farm.Exceptions.FarmIncompleteException;
-import com.projeto_inicial.projeto_inicial.Farm.Exceptions.FarmNotFoundException;
+import com.projeto_inicial.projeto_inicial.Farm.Exceptions.ObjectIncompleteException;
+import com.projeto_inicial.projeto_inicial.Farm.Exceptions.ObjectNotFoundException;
 import com.projeto_inicial.projeto_inicial.Farm.Model.Farm;
 import com.projeto_inicial.projeto_inicial.Farm.Repository.FarmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +27,11 @@ public class FarmServiceImpl implements FarmService {
     @Override
     public Farm fetchById(String farmId){
         try {
-            if(farmId.isEmpty()){
-                throw new FarmIncompleteException("farm Id");
+            if(farmId == null || farmId.isEmpty()){
+                throw new ObjectIncompleteException("farm Id");
             }
             return  this.farmRepository.findById(farmId).orElseThrow(
-                    () -> new FarmNotFoundException(farmId));
+                    () -> new ObjectNotFoundException("Farm", farmId));
         }
         catch(Exception e){
             throw new InternalError(e);
@@ -41,6 +41,7 @@ public class FarmServiceImpl implements FarmService {
     @Override
     public Farm create(Farm farm){
         try{
+            CheckFarm.notNullOrEmpty(farm);
             CheckFarm.hasName(farm);
             return this.farmRepository.save(farm);
         }

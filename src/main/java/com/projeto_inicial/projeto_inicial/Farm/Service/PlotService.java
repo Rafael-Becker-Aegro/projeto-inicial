@@ -9,7 +9,7 @@ public interface PlotService {
 
     Plot create(Plot plot);
 
-    String removeById(String plotId);
+    void removeById(String plotId);
 
     List<Plot> fetchAllByFarmId(String farmId);
 }

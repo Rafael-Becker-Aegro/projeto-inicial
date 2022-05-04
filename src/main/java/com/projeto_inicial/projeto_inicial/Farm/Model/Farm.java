@@ -12,28 +12,28 @@ import java.util.Objects;
 public class Farm {
 
     @Id
-    private java.lang.String id;
+    private String id;
     @NotNull
-    private java.lang.String name;
+    private String name;
 
-    public Farm(java.lang.String id, java.lang.String name) {
+    public Farm(String id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public java.lang.String getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(java.lang.String id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public java.lang.String getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(java.lang.String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -56,7 +56,7 @@ public class Farm {
     }
 
     @Override
-    public java.lang.String toString() {
+    public String toString() {
         return "Farm{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
