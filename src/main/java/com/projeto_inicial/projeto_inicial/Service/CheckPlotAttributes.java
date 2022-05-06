@@ -3,7 +3,7 @@ package com.projeto_inicial.projeto_inicial.Service;
 import com.projeto_inicial.projeto_inicial.Exceptions.ObjectIncompleteException;
 import com.projeto_inicial.projeto_inicial.Model.Plot;
 
-public class CheckPlot {
+public class CheckPlotAttributes {
     public static void notNullOrEmpty(Plot plot){
         if(plot == null || plot.isEmpty()){
             throw new ObjectIncompleteException("Plot");
@@ -34,10 +34,17 @@ public class CheckPlot {
         }
     }
 
-    public static void hasAllMinusId(Plot plot){
+    public static void forInsertion(Plot plot){
         notNullOrEmpty(plot);
         hasName(plot);
         hasArea(plot);
         hasFarm(plot);
+    }
+
+    public static void forUpdate(Plot plot){
+        hasId(plot);
+        notNullOrEmpty(plot);
+        hasName(plot);
+        hasArea(plot);
     }
 }
