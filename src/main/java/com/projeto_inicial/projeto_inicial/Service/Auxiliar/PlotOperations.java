@@ -1,4 +1,4 @@
-package com.projeto_inicial.projeto_inicial.Service;
+package com.projeto_inicial.projeto_inicial.Service.Auxiliar;
 
 import com.projeto_inicial.projeto_inicial.Exceptions.PlotAreaLessOrEqualZeroInProductionException;
 import com.projeto_inicial.projeto_inicial.Model.Plot;
