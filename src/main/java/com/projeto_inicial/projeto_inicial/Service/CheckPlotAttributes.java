@@ -1,7 +1,10 @@
 package com.projeto_inicial.projeto_inicial.Service;
 
 import com.projeto_inicial.projeto_inicial.Exceptions.ObjectIncompleteException;
+import com.projeto_inicial.projeto_inicial.Exceptions.PlotAreaLessOrEqualZeroException;
 import com.projeto_inicial.projeto_inicial.Model.Plot;
+
+import java.math.BigDecimal;
 
 public class CheckPlotAttributes {
     public static void notNullOrEmpty(Plot plot){
@@ -22,9 +25,12 @@ public class CheckPlotAttributes {
         }
     }
 
-    public static void hasArea(Plot plot){
+    public static void hasValidArea(Plot plot){
         if(plot.getArea() == null) {
             throw new ObjectIncompleteException("Plot Area");
+        }
+        if(plot.getArea().compareTo(BigDecimal.ZERO) <= 0){
+            throw new PlotAreaLessOrEqualZeroException();
         }
     }
 
@@ -37,7 +43,7 @@ public class CheckPlotAttributes {
     public static void forInsertion(Plot plot){
         notNullOrEmpty(plot);
         hasName(plot);
-        hasArea(plot);
+        hasValidArea(plot);
         hasFarm(plot);
     }
 
@@ -45,6 +51,6 @@ public class CheckPlotAttributes {
         hasId(plot);
         notNullOrEmpty(plot);
         hasName(plot);
-        hasArea(plot);
+        hasValidArea(plot);
     }
 }
