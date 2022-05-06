@@ -35,4 +35,16 @@ public class GenericExceptionHandler {
         GenericException genericException = completeGenericException(e, request);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(genericException);
     }
+
+    @ExceptionHandler(PlotAreaLessOrEqualZeroInProductionException.class)
+    public ResponseEntity<GenericException> plotAreaZeroInProduction(ObjectIncompleteException e, HttpServletRequest request){
+        GenericException genericException = completeGenericException(e, request);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(genericException);
+    }
+
+    @ExceptionHandler(PlotAreaLessOrEqualZeroException.class)
+    public ResponseEntity<GenericException> plotAreaZero(ObjectIncompleteException e, HttpServletRequest request){
+        GenericException genericException = completeGenericException(e, request);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(genericException);
+    }
 }
