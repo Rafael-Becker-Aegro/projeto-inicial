@@ -29,4 +29,10 @@ public class GenericExceptionHandler {
         GenericException genericException = completeGenericException(e, request);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(genericException);
     }
+
+    @ExceptionHandler(CantChangePlotFarmException.class)
+    public ResponseEntity<GenericException> cantChangerPlotFarm(ObjectIncompleteException e, HttpServletRequest request){
+        GenericException genericException = completeGenericException(e, request);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(genericException);
+    }
 }
