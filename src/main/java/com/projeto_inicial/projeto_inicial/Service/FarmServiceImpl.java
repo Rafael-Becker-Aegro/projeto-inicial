@@ -6,6 +6,8 @@ import com.projeto_inicial.projeto_inicial.Model.Farm;
 import com.projeto_inicial.projeto_inicial.Model.Plot;
 import com.projeto_inicial.projeto_inicial.Repository.FarmRepository;
 import com.projeto_inicial.projeto_inicial.Repository.PlotRepository;
+import com.projeto_inicial.projeto_inicial.Service.Auxiliar.CheckFarm;
+import com.projeto_inicial.projeto_inicial.Service.Auxiliar.PlotOperations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

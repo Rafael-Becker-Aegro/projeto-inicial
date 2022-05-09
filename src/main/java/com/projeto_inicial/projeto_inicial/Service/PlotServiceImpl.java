@@ -6,6 +6,8 @@ import com.projeto_inicial.projeto_inicial.Exceptions.ObjectNotFoundException;
 import com.projeto_inicial.projeto_inicial.Model.Plot;
 import com.projeto_inicial.projeto_inicial.Repository.FarmRepository;
 import com.projeto_inicial.projeto_inicial.Repository.PlotRepository;
+import com.projeto_inicial.projeto_inicial.Service.Auxiliar.CheckPlotAttributes;
+import com.projeto_inicial.projeto_inicial.Service.Auxiliar.PlotOperations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

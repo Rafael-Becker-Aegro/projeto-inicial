@@ -1,5 +1,6 @@
-package com.projeto_inicial.projeto_inicial.Service;
+package com.projeto_inicial.projeto_inicial.Service.Auxiliar;
 
+import com.projeto_inicial.projeto_inicial.Exceptions.PlotAreaLessOrEqualZeroInProductionException;
 import com.projeto_inicial.projeto_inicial.Model.Plot;
 import com.projeto_inicial.projeto_inicial.Model.Production;
 
@@ -20,8 +21,8 @@ public class PlotOperations {
 
     public static BigDecimal productivity(Plot plot){
         BigDecimal area = plot.getArea();
-        if (area.compareTo(BigDecimal.ZERO) == 0){
-            return BigDecimal.ZERO;
+        if (area.compareTo(BigDecimal.ZERO) <= 0){
+            throw new PlotAreaLessOrEqualZeroInProductionException();
         }
         return totalProduction(plot).divide(plot.getArea(), 2, RoundingMode.HALF_UP);
     }
@@ -35,8 +36,8 @@ public class PlotOperations {
             production = production.add(PlotOperations.totalProduction(p));
         }
 
-        if (area.compareTo(BigDecimal.ZERO) == 0){
-            return BigDecimal.ZERO;
+        if (area.compareTo(BigDecimal.ZERO) <= 0){
+            throw new PlotAreaLessOrEqualZeroInProductionException();
         }
         return production.divide(area, 2, RoundingMode.HALF_UP);
     }
