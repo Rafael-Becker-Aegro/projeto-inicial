@@ -70,8 +70,11 @@ public class FarmServiceImpl implements FarmService {
     }
 
     @Override
-    public List<Farm> fetchAllByFarmName(java.lang.String farmName){
+    public List<Farm> fetchAllByFarmName(String farmName){
         try{
+            if(farmName == null){
+                throw new ObjectIncompleteException("Farm Name");
+            }
             return this.farmRepository.findFarmsByName(farmName);
         }
         catch(Exception e){
