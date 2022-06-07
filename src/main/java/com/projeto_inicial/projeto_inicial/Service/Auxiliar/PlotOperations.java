@@ -12,9 +12,11 @@ public class PlotOperations {
     public static BigDecimal totalProduction(Plot plot){
         BigDecimal sum = BigDecimal.ZERO;
         List<Production> pList = plot.getProductionList();
-        for (Production p : pList
-        ) {
-            sum = sum.add(p.getQuantity());
+        if(pList != null){
+            for (Production p : pList
+            ) {
+                sum = sum.add(p.getQuantity());
+            }
         }
         return sum;
     }

@@ -6,7 +6,7 @@ import com.projeto_inicial.projeto_inicial.Exceptions.ObjectNotFoundException;
 import com.projeto_inicial.projeto_inicial.Model.Plot;
 import com.projeto_inicial.projeto_inicial.Repository.FarmRepository;
 import com.projeto_inicial.projeto_inicial.Repository.PlotRepository;
-import com.projeto_inicial.projeto_inicial.Service.Auxiliar.CheckPlotAttributes;
+import com.projeto_inicial.projeto_inicial.Service.Auxiliar.CheckPlot;
 import com.projeto_inicial.projeto_inicial.Service.Auxiliar.PlotOperations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,7 +38,8 @@ public class PlotServiceImpl implements PlotService {
     @Override
     public Plot create(Plot plot) {
         try{
-            CheckPlotAttributes.forInsertion(plot);
+            CheckPlot.forInsertion(plot);
+            plot.setId(null);
             if(farmRepository.existsById(plot.getFarm()))
             {
                 return this.plotRepository.save(plot);
@@ -78,7 +79,7 @@ public class PlotServiceImpl implements PlotService {
     @Override
     public Plot update(Plot plot){
         try{
-            CheckPlotAttributes.forUpdate(plot);
+            CheckPlot.forUpdate(plot);
             Plot oldPlot = this.fetchById(plot.getId());
             if(!plot.getFarm().equals(oldPlot.getFarm())){
                 throw new CantChangePlotFarmException();

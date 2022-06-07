@@ -50,6 +50,7 @@ public class FarmServiceImpl implements FarmService {
         try{
             CheckFarm.notNullOrEmpty(farm);
             CheckFarm.hasName(farm);
+            farm.setId(null);
             return this.farmRepository.save(farm);
         }
         catch(Exception e){

@@ -6,7 +6,7 @@ import com.projeto_inicial.projeto_inicial.Model.Plot;
 
 import java.math.BigDecimal;
 
-public class CheckPlotAttributes {
+public class CheckPlot {
     public static void notNullOrEmpty(Plot plot){
         if(plot == null || plot.isEmpty()){
             throw new ObjectIncompleteException("Plot");
