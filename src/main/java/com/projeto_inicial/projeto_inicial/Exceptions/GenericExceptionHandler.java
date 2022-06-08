@@ -47,4 +47,10 @@ public class GenericExceptionHandler {
         GenericException genericException = completeGenericException(e, request);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(genericException);
     }
+
+    @ExceptionHandler(CantChangeProductionPlotException.class)
+    public ResponseEntity<GenericException> cantChangerProductionPlot(ObjectIncompleteException e, HttpServletRequest request){
+        GenericException genericException = completeGenericException(e, request);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(genericException);
+    }
 }

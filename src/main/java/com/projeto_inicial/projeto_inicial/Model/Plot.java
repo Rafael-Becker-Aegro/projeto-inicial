@@ -7,7 +7,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.util.ObjectUtils;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @Document
 public class Plot {
@@ -20,14 +19,12 @@ public class Plot {
     private BigDecimal area;
     @NotNull
     private String farm;
-    private List<Production> productionList;
 
-    public Plot(String id, String name, BigDecimal area, String farm, List<Production> productionList) {
+    public Plot(String id, String name, BigDecimal area, String farm) {
         this.id = id;
         this.name = name;
         this.area = area;
         this.farm = farm;
-        this.productionList = productionList;
     }
 
     public void setId(String id) {
@@ -65,13 +62,5 @@ public class Plot {
 
     public void setFarm(String farm) {
         this.farm = farm;
-    }
-
-    public List<Production> getProductionList() {
-        return productionList;
-    }
-
-    public void setProductionList(List<Production> productionList) {
-        this.productionList = productionList;
     }
 }

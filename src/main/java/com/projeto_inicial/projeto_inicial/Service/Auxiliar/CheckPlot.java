@@ -6,7 +6,7 @@ import com.projeto_inicial.projeto_inicial.Model.Plot;
 
 import java.math.BigDecimal;
 
-public class CheckPlotAttributes {
+public class CheckPlot {
     public static void notNullOrEmpty(Plot plot){
         if(plot == null || plot.isEmpty()){
             throw new ObjectIncompleteException("Plot");
@@ -37,6 +37,12 @@ public class CheckPlotAttributes {
     public static void hasFarm(Plot plot){
         if(plot.getFarm() == null || plot.getFarm().isEmpty()) {
             throw new ObjectIncompleteException("Farm id");
+        }
+    }
+
+    public static void hasProductivity(Plot plot){
+        if(plot.getFarm() == null || plot.getFarm().isEmpty()) {
+            throw new ObjectIncompleteException("Plot Productivity");
         }
     }
 

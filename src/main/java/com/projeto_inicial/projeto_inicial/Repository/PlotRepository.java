@@ -6,5 +6,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 
 public interface PlotRepository extends MongoRepository<Plot, String> {
-    List<Plot> findPlotsByFarm(String farm);
+    List<Plot> findPlotsByFarm(String farmId);
 }
