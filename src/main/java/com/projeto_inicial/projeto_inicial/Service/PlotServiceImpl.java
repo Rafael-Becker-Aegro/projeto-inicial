@@ -26,52 +26,36 @@ public class PlotServiceImpl implements PlotService {
 
     @Override
     public Plot fetchById(String plotId) {
-        try {
-            if (plotId == null || plotId.isEmpty()) {
-                throw new ObjectIncompleteException("Plot Id");
-            }
-            return this.plotRepository.findById(plotId).orElseThrow(
-                    () -> new ObjectNotFoundException("Plot", plotId));
-        } catch (Exception e) {
-            throw new InternalError(e);
+        if (plotId == null || plotId.isEmpty()) {
+            throw new ObjectIncompleteException("Plot Id");
         }
+        return this.plotRepository.findById(plotId).orElseThrow(
+                () -> new ObjectNotFoundException("Plot", plotId));
     }
 
     @Override
     public Plot create(Plot plot) {
-        try {
-            CheckPlot.forInsertion(plot);
-            plot.setId(null);
-            if (farmRepository.existsById(plot.getFarm())) {
-                return this.plotRepository.save(plot);
-            }
-            throw new ObjectNotFoundException("Farm", plot.getFarm());
-        } catch (Exception e) {
-            throw new InternalError(e);
+        CheckPlot.forInsertion(plot);
+        plot.setId(null);
+        if (farmRepository.existsById(plot.getFarm())) {
+            return this.plotRepository.save(plot);
         }
+        throw new ObjectNotFoundException("Farm", plot.getFarm());
     }
 
     @Override
     public void removeById(String plotId) {
-        try {
-            Plot plot = this.fetchById(plotId);
-            productionService.removeAllByPlotId(plotId);
-            this.plotRepository.delete(plot);
-        } catch (Exception e) {
-            throw new InternalError(e);
-        }
+        Plot plot = this.fetchById(plotId);
+        productionService.removeAllByPlotId(plotId);
+        this.plotRepository.delete(plot);
     }
 
     @Override
     public List<Plot> fetchAllByFarmId(String farmId) {
-        try {
-            if (farmId == null || farmId.isEmpty()) {
-                throw new ObjectIncompleteException("Farm Id");
-            }
-            return this.plotRepository.findPlotsByFarm(farmId);
-        } catch (Exception e) {
-            throw new InternalError(e);
+        if (farmId == null || farmId.isEmpty()) {
+            throw new ObjectIncompleteException("Farm Id");
         }
+        return this.plotRepository.findPlotsByFarm(farmId);
     }
 
     @Override
@@ -85,21 +69,16 @@ public class PlotServiceImpl implements PlotService {
     }
 
     @Override
-    public BigDecimal getProductivity(String plotId){
-        try {
-            Plot plot = this.fetchById(plotId);
-            List<Production> productionList = this.productionService.fetchAllByPlotId(plotId);
+    public BigDecimal getProductivity(String plotId) {
+        Plot plot = this.fetchById(plotId);
+        List<Production> productionList = this.productionService.fetchAllByPlotId(plotId);
 
-            return ProductivityOperations.calculatePlotProductivity(plot.getArea(), productionList);
-        }
-        catch(Exception e){
-            throw new InternalError(e);
-        }
+        return ProductivityOperations.calculatePlotProductivity(plot.getArea(), productionList);
     }
 
     @Override
-    public Long removeAllByFarmId(String farmId){
-        if(farmId == null || farmId.isEmpty()){
+    public Long removeAllByFarmId(String farmId) {
+        if (farmId == null || farmId.isEmpty()) {
             throw new ObjectIncompleteException("Farm Id");
         }
         this.productionService.removeAllByFarmId(farmId);

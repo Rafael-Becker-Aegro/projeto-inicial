@@ -25,59 +25,41 @@ public class FarmServiceImpl implements FarmService {
 
     @Override
     public List<Farm> getAll() {
-        try {
-            return this.farmRepository.findAll();
-        } catch (Exception e) {
-            throw new InternalError(e);
-        }
+        return this.farmRepository.findAll();
+
     }
 
     @Override
     public Farm fetchById(String farmId) {
-        try {
-            if (farmId == null || farmId.isEmpty()) {
-                throw new ObjectIncompleteException("farm Id");
-            }
-            return this.farmRepository.findById(farmId).orElseThrow(
-                    () -> new ObjectNotFoundException("Farm", farmId));
-        } catch (Exception e) {
-            throw new InternalError(e);
+        if (farmId == null || farmId.isEmpty()) {
+            throw new ObjectIncompleteException("farm Id");
         }
+        return this.farmRepository.findById(farmId).orElseThrow(
+                () -> new ObjectNotFoundException("Farm", farmId));
+
     }
 
     @Override
     public Farm create(Farm farm) {
-        try {
-            CheckFarm.notNullOrEmpty(farm);
-            CheckFarm.hasName(farm);
-            farm.setId(null);
-            return this.farmRepository.save(farm);
-        } catch (Exception e) {
-            throw new InternalError(e);
-        }
+        CheckFarm.notNullOrEmpty(farm);
+        CheckFarm.hasName(farm);
+        farm.setId(null);
+        return this.farmRepository.save(farm);
     }
 
     @Override
     public void remove(String farmId) {
-        try {
-            Farm farm = this.fetchById(farmId);
-            plotService.removeAllByFarmId(farmId);
-            this.farmRepository.delete(farm);
-        } catch (Exception e) {
-            throw new InternalError(e);
-        }
+        Farm farm = this.fetchById(farmId);
+        plotService.removeAllByFarmId(farmId);
+        this.farmRepository.delete(farm);
     }
 
     @Override
     public List<Farm> fetchAllByFarmName(String farmName) {
-        try {
-            if (farmName == null) {
-                throw new ObjectIncompleteException("Farm Name");
-            }
-            return this.farmRepository.findFarmsByName(farmName);
-        } catch (Exception e) {
-            throw new InternalError(e);
+        if (farmName == null) {
+            throw new ObjectIncompleteException("Farm Name");
         }
+        return this.farmRepository.findFarmsByName(farmName);
     }
 
     @Override
@@ -89,15 +71,11 @@ public class FarmServiceImpl implements FarmService {
 
     @Override
     public BigDecimal getProductivity(String farmId) {
-        try {
-            if (farmId == null || farmId.isEmpty()) {
-                throw new ObjectIncompleteException("Farm Id");
-            }
-            List<Plot> plotList = this.plotService.fetchAllByFarmId(farmId);
-            List<Production> productionList = this.productionService.fetchAllByFarmId(farmId);
-            return ProductivityOperations.productivityOfList(plotList, productionList);
-        } catch (Exception e) {
-            throw new InternalError(e);
+        if (farmId == null || farmId.isEmpty()) {
+            throw new ObjectIncompleteException("Farm Id");
         }
+        List<Plot> plotList = this.plotService.fetchAllByFarmId(farmId);
+        List<Production> productionList = this.productionService.fetchAllByFarmId(farmId);
+        return ProductivityOperations.productivityOfList(plotList, productionList);
     }
 }
