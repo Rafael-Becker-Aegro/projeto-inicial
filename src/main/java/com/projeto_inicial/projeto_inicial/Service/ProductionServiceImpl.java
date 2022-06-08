@@ -77,4 +77,20 @@ public class ProductionServiceImpl implements ProductionService{
         }
         return this.productionRepository.save(production);
     }
+
+    @Override
+    public Long removeAllByPlotId(String plotId){
+        if(plotId == null || plotId.isEmpty()){
+            throw new ObjectIncompleteException("Plot Id");
+        }
+        return this.productionRepository.deleteProductionByPlot(plotId);
+    }
+
+    @Override
+    public Long removeAllByFarmId(String farmId){
+        if(farmId == null || farmId.isEmpty()){
+            throw new ObjectIncompleteException("Farm Id");
+        }
+        return this.productionRepository.deleteProductionByFarm(farmId);
+    }
 }

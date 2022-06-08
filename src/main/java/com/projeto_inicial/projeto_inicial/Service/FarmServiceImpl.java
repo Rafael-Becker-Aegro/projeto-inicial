@@ -61,7 +61,7 @@ public class FarmServiceImpl implements FarmService {
     public void remove(String farmId) {
         try {
             Farm farm = this.fetchById(farmId);
-
+            plotService.removeAllByFarmId(farmId);
             this.farmRepository.delete(farm);
         } catch (Exception e) {
             throw new InternalError(e);

@@ -55,7 +55,7 @@ public class PlotServiceImpl implements PlotService {
     public void removeById(String plotId) {
         try {
             Plot plot = this.fetchById(plotId);
-
+            productionService.removeAllByPlotId(plotId);
             this.plotRepository.delete(plot);
         } catch (Exception e) {
             throw new InternalError(e);
@@ -95,5 +95,14 @@ public class PlotServiceImpl implements PlotService {
         catch(Exception e){
             throw new InternalError(e);
         }
+    }
+
+    @Override
+    public Long removeAllByFarmId(String farmId){
+        if(farmId == null || farmId.isEmpty()){
+            throw new ObjectIncompleteException("Farm Id");
+        }
+        this.productionService.removeAllByFarmId(farmId);
+        return this.plotRepository.deletePlotByFarm(farmId);
     }
 }

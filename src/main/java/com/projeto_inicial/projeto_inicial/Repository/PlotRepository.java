@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface PlotRepository extends MongoRepository<Plot, String> {
     List<Plot> findPlotsByFarm(String farmId);
+    Long deletePlotByFarm(String farmId);
 }

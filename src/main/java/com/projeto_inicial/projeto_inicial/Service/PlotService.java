@@ -17,4 +17,6 @@ public interface PlotService {
     Plot update(Plot plot);
 
     public BigDecimal getProductivity(String plotId);
+
+    public Long removeAllByFarmId(String farmId);
 }
