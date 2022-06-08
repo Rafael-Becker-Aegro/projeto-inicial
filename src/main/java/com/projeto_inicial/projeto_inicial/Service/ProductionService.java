@@ -13,5 +13,7 @@ public interface ProductionService {
 
     List<Production> fetchAllByPlotId(String plotId);
 
+    List<Production> fetchAllByFarmId(String plotId);
+
     Production update(Production production);
 }

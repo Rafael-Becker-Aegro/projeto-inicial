@@ -6,8 +6,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.util.ObjectUtils;
 
-import java.util.Objects;
-
 @Document
 public class Farm {
 
@@ -42,24 +40,4 @@ public class Farm {
         return ObjectUtils.isEmpty(this);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Farm farm = (Farm) o;
-        return Objects.equals(id, farm.id) && Objects.equals(name, farm.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name);
-    }
-
-    @Override
-    public String toString() {
-        return "Farm{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }

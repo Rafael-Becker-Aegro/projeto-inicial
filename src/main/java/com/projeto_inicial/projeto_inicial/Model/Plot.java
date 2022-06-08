@@ -7,7 +7,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.util.ObjectUtils;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @Document
 public class Plot {
@@ -63,8 +62,5 @@ public class Plot {
 
     public void setFarm(String farm) {
         this.farm = farm;
-    }
-
-    public void setProductionList(List<Production> productionList) {
     }
 }

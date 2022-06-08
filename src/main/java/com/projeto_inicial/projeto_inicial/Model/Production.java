@@ -22,12 +22,15 @@ public class Production {
     private BigDecimal quantity;
     @NotNull
     private String plot;
+    @NotNull
+    private String farm;
 
-    public Production(String id, String crop, BigDecimal quantity, String plot) {
+    public Production(String id, String crop, BigDecimal quantity, String plot, String farm) {
         this.id = id;
         this.crop = crop;
         this.quantity = quantity;
         this.plot = plot;
+        this.farm = farm;
     }
 
     public String getId() {
@@ -60,6 +63,14 @@ public class Production {
 
     public void setPlot(String plot) {
         this.plot = plot;
+    }
+
+    public String getFarm() {
+        return farm;
+    }
+
+    public void setFarm(String farm) {
+        this.farm = farm;
     }
 
     @JsonIgnore

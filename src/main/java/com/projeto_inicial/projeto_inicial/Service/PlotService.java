@@ -16,5 +16,5 @@ public interface PlotService {
 
     Plot update(Plot plot);
 
-    BigDecimal getProductivity(String plotId);
+    public BigDecimal getProductivity(String plotId);
 }

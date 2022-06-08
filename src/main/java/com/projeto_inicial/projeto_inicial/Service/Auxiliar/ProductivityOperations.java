@@ -1,23 +1,17 @@
 package com.projeto_inicial.projeto_inicial.Service.Auxiliar;
 
-import com.projeto_inicial.projeto_inicial.Exceptions.PlotAreaLessOrEqualZeroInProductionException;
 import com.projeto_inicial.projeto_inicial.Model.Plot;
 import com.projeto_inicial.projeto_inicial.Model.Production;
-import com.projeto_inicial.projeto_inicial.Repository.ProductionRepository;
-import com.projeto_inicial.projeto_inicial.Service.ProductionServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
-public class PlotOperations {
-
-    public static BigDecimal totalProduction(Plot plot){
+public class ProductivityOperations {
+    public static BigDecimal totalProduction(List<Production> productionList) {
         BigDecimal sum = BigDecimal.ZERO;
-        List<Production> pList = productionService.fetchAllByPlotId(plot.getId());
-        if(pList != null){
-            for (Production p : pList
+        if (productionList != null) {
+            for (Production p : productionList
             ) {
                 sum = sum.add(p.getQuantity());
             }
@@ -25,26 +19,22 @@ public class PlotOperations {
         return sum;
     }
 
-    public static BigDecimal getProductivity(Plot plot){
-        BigDecimal area = plot.getArea();
-        if (area.compareTo(BigDecimal.ZERO) <= 0){
-            return BigDecimal.ZERO;
-        }
-        return totalProduction(plot).divide(plot.getArea(), 2, RoundingMode.HALF_UP);
-    }
-
-    public static BigDecimal productivityOfList(List<Plot> plotList){
-        BigDecimal area = BigDecimal.ZERO;
-        BigDecimal production = BigDecimal.ZERO;
+    public static BigDecimal productivityOfList(List<Plot> plotList, List<Production> productionList) {
+        BigDecimal totalArea = BigDecimal.ZERO;
         for (Plot p : plotList
         ) {
-            area = area.add(p.getArea());
-            production = production.add(PlotOperations.totalProduction(p));
+            totalArea = totalArea.add(p.getArea());
         }
+        if (totalArea.compareTo(BigDecimal.ZERO) <= 0) {
+            return BigDecimal.ZERO;
+        }
+        return totalProduction(productionList).divide(totalArea, 2, RoundingMode.HALF_UP);
+    }
 
-        if (area.compareTo(BigDecimal.ZERO) <= 0){
-            throw new PlotAreaLessOrEqualZeroInProductionException();
+    public static BigDecimal calculatePlotProductivity(BigDecimal area, List<Production> productionList) {
+        if (area.compareTo(BigDecimal.ZERO) <= 0) {
+            return BigDecimal.ZERO;
         }
-        return production.divide(area, 2, RoundingMode.HALF_UP);
+        return totalProduction(productionList).divide(area, 2, RoundingMode.HALF_UP);
     }
 }

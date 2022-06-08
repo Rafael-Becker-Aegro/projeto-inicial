@@ -40,6 +40,12 @@ public class CheckPlot {
         }
     }
 
+    public static void hasProductivity(Plot plot){
+        if(plot.getFarm() == null || plot.getFarm().isEmpty()) {
+            throw new ObjectIncompleteException("Plot Productivity");
+        }
+    }
+
     public static void forInsertion(Plot plot){
         notNullOrEmpty(plot);
         hasName(plot);

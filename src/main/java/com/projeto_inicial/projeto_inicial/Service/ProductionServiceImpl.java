@@ -1,6 +1,7 @@
 package com.projeto_inicial.projeto_inicial.Service;
 
 import com.projeto_inicial.projeto_inicial.Exceptions.CantChangePlotFarmException;
+import com.projeto_inicial.projeto_inicial.Exceptions.CantChangeProductionPlotException;
 import com.projeto_inicial.projeto_inicial.Exceptions.ObjectIncompleteException;
 import com.projeto_inicial.projeto_inicial.Exceptions.ObjectNotFoundException;
 import com.projeto_inicial.projeto_inicial.Model.Production;
@@ -8,14 +9,19 @@ import com.projeto_inicial.projeto_inicial.Repository.PlotRepository;
 import com.projeto_inicial.projeto_inicial.Repository.ProductionRepository;
 import com.projeto_inicial.projeto_inicial.Service.Auxiliar.CheckProduction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ProductionServiceImpl implements ProductionService{
     @Autowired
     private ProductionRepository productionRepository;
     @Autowired
     private PlotRepository plotRepository;
+
+    public ProductionServiceImpl() {
+    }
 
     @Override
     public Production fetchById(String productionId) {
@@ -52,10 +58,21 @@ public class ProductionServiceImpl implements ProductionService{
     }
 
     @Override
+    public List<Production> fetchAllByFarmId(String farmId) {
+        if(farmId == null || farmId.isEmpty()){
+            throw new ObjectIncompleteException("Plot Id");
+        }
+        return this.productionRepository.findProductionsByFarm(farmId);
+    }
+
+    @Override
     public Production update(Production production) {
         CheckProduction.forUpdate(production);
         Production oldProduction = this.fetchById(production.getId());
         if(!production.getPlot().equals(oldProduction.getPlot())){
+            throw new CantChangeProductionPlotException();
+        }
+        if(!production.getFarm().equals(oldProduction.getFarm())){
             throw new CantChangePlotFarmException();
         }
         return this.productionRepository.save(production);
